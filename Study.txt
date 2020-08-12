@@ -1,0 +1,57 @@
+Interview focus
+
+soap/rest
+
+wsdl
+
+dependency injection
+
+java
+- reverse a string 
+- oca
+- - abstract and interface, difference
+
+
+jdbc
+- how to connect to a database
+
+top interview
+
+spring
+
+
+hackerRank
+
+Week 1 Quiz
+Java
+https://www.onlineexambuilder.com/java-practice-week-1-copy/exam-309357
+JUnit
+https://www.onlineexambuilder.com/junit-practice-week-1-copy/exam-309359
+Maven
+https://www.onlineexambuilder.com/maven-practice-week-1-copy/exam-309358
+
+Week 2 Quiz
+SQL
+https://www.onlineexambuilder.com/sql-week-2/exam-309575
+JDBC
+https://www.onlineexambuilder.com/jdbc-week-2/exam-309578
+Servlet
+https://www.onlineexambuilder.com/servlets-week-2/exam-309583
+
+Week 3 Quiz
+Agile
+https://www.onlineexambuilder.com/agile-week-3/exam-310329
+AWS
+https://www.onlineexambuilder.com/aws-week-3/exam-310331
+Jenkins
+https://www.onlineexambuilder.com/jenkins-week-3/exam-310332
+JavaScript
+https://www.onlineexambuilder.com/javascript-week-3/exam-310326
+
+Week 4 Quiz
+Spring
+https://www.onlineexambuilder.com/spring/exam-312132
+Hibernate
+https://www.onlineexambuilder.com/hibernate/exam-312128
+Angular
+https://www.onlineexambuilder.com/angular/exam-312119

@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+:root
+{
+  /* left page left column */
+  --font-ingredient-text-lplc-alpha: 1;
+  /* left page right column */
+  --font-ingredient-text-lprc-alpha: 1;
+  /* right page left column */
+  --font-ingredient-text-rplc-alpha: 1;
+  /* right page right column */
+  --font-ingredient-text-rprc-alpha: 1;
+}
