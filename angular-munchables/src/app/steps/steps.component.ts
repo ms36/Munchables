@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GlobalVariables } from '../models/globalVariables';
 import { Steps } from '../models/step';
 import { StepService } from './step.service';
 
