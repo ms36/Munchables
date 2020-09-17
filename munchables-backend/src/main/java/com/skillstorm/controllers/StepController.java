@@ -5,6 +5,7 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.skillstorm.services.StepService;
 
 @RestController
 @RequestMapping("/step")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class StepController {
 	
 	private static final Logger log = Logger.getLogger(StepController.class);
