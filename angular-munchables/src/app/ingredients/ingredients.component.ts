@@ -1,6 +1,6 @@
 import { IngredientsService } from './ingredients.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Ingredient } from '../models/ingredient';
+import { Ingredients } from '../models/ingredients';
 
 @Component({
   selector: 'app-ingredients',
@@ -10,7 +10,7 @@ import { Ingredient } from '../models/ingredient';
 export class IngredientsComponent implements OnInit {
   @Input() pageNumber: number;
 
-  ingredients: Ingredient[] = [];
+  ingredients: Ingredients[] = [];
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
