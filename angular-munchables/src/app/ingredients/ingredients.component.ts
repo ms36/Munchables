@@ -14,14 +14,27 @@ export class IngredientsComponent implements OnInit {
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
-    this.getSteps(this.pageNumber);
+    this.getIngredients(this.pageNumber);
   }
 
-  getSteps(recipeId: number): void {
-    this.ingredientsService.getIngredients(recipeId).subscribe(step => {
-      this.ingredients = step;
+  getIngredients(recipeId: number): void {
+    this.ingredientsService.getIngredients(recipeId).subscribe(ingredient => {
+      this.ingredients = ingredient;
       console.log('ingredients', this.ingredients);
     });
+  }
+
+  getHalfIngredientsFromRecipe(half: number) {
+    let ingredientTotal = 0;
+    const ingredientList = [];
+
+    for (const ingredient of this.ingredients) {
+      if (ingredientTotal % 2 === half) {
+        ingredientList.push(ingredient);
+      }
+      ingredientTotal++;
+    }
+    return ingredientList;
   }
 
 }

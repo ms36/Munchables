@@ -1,9 +1,12 @@
 <table>
-  <tr *ngFor="let ingredient of this.ingredients">
-    <td>{{ingredient.name}}</td>
-  </tr>
-  <tr>
-    <td>ingredient</td>
-    <td>ingredient</td>
-  </tr>
+  <th>
+    <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(0)">
+      <td>{{ingredient.name}}</td>
+    </tr>
+  </th>
+  <th>
+    <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(1)">
+      <td>{{ingredient.name}}</td>
+    </tr>
+  </th>
 </table>
