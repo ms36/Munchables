@@ -1,0 +1,22 @@
+.split {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+}
+
+.split-left {
+  left: 0;
+  background-color: rgb(250, 224, 188);
+  background-image: linear-gradient(to right,rgba(0,0,0,0.2), rgba(0,0,0,0), rgba(0,0,0,0),
+                                  rgba(0,0,0,0), rgba(0,0,0,0.8)), url(src/assets/PaperTextureMirrored.png);
+  background-size: cover;
+
+}
+
+.split-right {
+  right: 0;
+  background-color: rgb(250, 224, 188);
+  background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0),rgba(0,0,0,0),
+                                 rgba(0,0,0,0), rgba(0,0,0,0.8)), url(src/assets/PaperTextureMirrored.png);
+  background-size: cover;
+}
