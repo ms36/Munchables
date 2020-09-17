@@ -5,7 +5,7 @@ export class Ingredients {
 
   constructor() {
     this.id = null;
-    this.name = null;
+    this.name = '';
     this.recipeId = null;
   }
 }

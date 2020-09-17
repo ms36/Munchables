@@ -7,7 +7,7 @@ export class Steps {
   constructor() {
     this.id = null;
     this.stepOrder = null;
-    this.stepProcess = null;
+    this.stepProcess = '';
     this.recipeId = null;
   }
 }

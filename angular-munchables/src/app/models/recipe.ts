@@ -9,8 +9,8 @@ export class Recipe {
 
   constructor() {
     this.id = null;
-    this.name = null;
-    this.ingredients = null;
-    this.steps = null;
+    this.name = '';
+    this.ingredients = [];
+    this.steps = [];
   }
 }

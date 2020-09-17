@@ -1,3 +1,5 @@
+import { RecipeService } from './recipe.service';
+import { Recipe } from './../models/recipe';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,9 +10,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RecipeComponent implements OnInit {
   @Input() pageNumber: number;
 
-  constructor() { }
+  recipe = new Recipe();
+
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.getRecipe(this.pageNumber);
+  }
+
+  getRecipe(recipeId: number): void {
+    this.recipeService.getRecipe(recipeId).subscribe(recipe => {
+      this.recipe = recipe;
+      console.log('recipe', this.recipe);
+    });
   }
 
 }
