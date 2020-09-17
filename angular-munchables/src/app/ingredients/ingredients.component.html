@@ -1,7 +1,6 @@
 <table>
-  <tr>
-    <td>ingredient</td>
-    <td>ingredient</td>
+  <tr *ngFor="let ingredient of this.ingredients">
+    <td>{{ingredient.name}}</td>
   </tr>
   <tr>
     <td>ingredient</td>

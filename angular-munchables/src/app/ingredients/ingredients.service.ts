@@ -5,15 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StepService {
-  private url = 'http://localhost:8080/step/';
+export class IngredientsService {
+  private url = 'http://localhost:8080/ingredient/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   constructor(private http: HttpClient) { }
 
-  getSteps(recipeId: number): Observable<any> {
+  getIngredients(recipeId: number): Observable<any> {
     return this.http.get<any>(this.url + recipeId);
   }
 }
