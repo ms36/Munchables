@@ -20,3 +20,27 @@
                                  rgba(0,0,0,0), rgba(0,0,0,0.8)), url(src/assets/PaperTextureMirrored.png);
   background-size: cover;
 }
+
+button {
+  width: 140px;
+  height: 90px;
+  position: absolute;
+  background-size: cover;
+  padding: 0;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.turn-page-left {
+  background-image: url(src/assets/PageCorner.png);
+  box-shadow: -10px 20px 20px rgb(61, 58, 58) ;
+}
+
+.turn-page-right {
+  right: 0;
+  background-image: url(src/assets/PageCornerMirrored.png);
+  box-shadow: 10px 20px 20px rgb(61, 58, 58) ;
+}
