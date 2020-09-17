@@ -1,5 +1,5 @@
 # Munchables
-This is a proof of concept for a "Wiki" for recipes. Users are able to add new recipes or change existing ones. The are able to edit the recipe name as well as add/delete ingredients and steps on how to make the recipe.
+This is a proof of concept for a "Wiki" for recipes. Users are able to add new recipes or change existing ones. They are able to edit the recipe name as well as add/delete ingredients and steps on how to make the recipe.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
