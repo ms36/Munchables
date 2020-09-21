@@ -1,6 +1,8 @@
 import { RecipeService } from './recipe.service';
 import { Recipe } from './../models/recipe';
 import { Component, OnInit, Input } from '@angular/core';
+import { Ingredients } from '../models/ingredients';
+import { Steps } from '../models/step';
 
 @Component({
   selector: 'app-recipe',
@@ -9,20 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RecipeComponent implements OnInit {
   @Input() pageNumber: number;
-
-  recipe = new Recipe();
+  @Input() recipes: Recipe[];
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.getRecipe(this.pageNumber);
-  }
-
-  getRecipe(recipeId: number): void {
-    this.recipeService.getRecipe(recipeId).subscribe(recipe => {
-      this.recipe = recipe;
-      console.log('recipe', this.recipe);
-    });
   }
 
 }

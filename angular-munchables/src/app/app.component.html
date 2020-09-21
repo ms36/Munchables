@@ -1,5 +1,13 @@
-<app-page class="split split-left" [pageNumber]="this.leftPageNumber"></app-page>
-<app-page class="split split-right" [pageNumber]="this.rightPageNumber"></app-page>
+<app-page
+  class="split split-left"
+  [pageNumber]="this.leftPageNumber"
+  [recipes]="this.recipes">
+</app-page>
+<app-page
+  class="split split-right"
+  [pageNumber]="this.rightPageNumber"
+  [recipes]="this.recipes">
+</app-page>
 <button
   class="turn-page-left"
   *ngIf="this.leftPageNumber > 1"

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Recipe } from '../models/recipe';
 
 @Component({
   selector: 'app-page',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PageComponent implements OnInit {
   @Input() pageNumber: number;
+  @Input() recipes: Recipe[];
 
   constructor() { }
 

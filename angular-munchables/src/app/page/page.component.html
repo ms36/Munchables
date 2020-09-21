@@ -2,5 +2,9 @@
   <div class="container">
     <p>{{this.pageNumber}}</p>
   </div>
-  <app-recipe [pageNumber]="this.pageNumber"></app-recipe>
+  <app-recipe
+    *ngIf="this.recipes"
+    [pageNumber]="this.pageNumber"
+    [recipes]="this.recipes">
+  </app-recipe>
 </div>

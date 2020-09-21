@@ -1,6 +1,7 @@
 import { IngredientsService } from './ingredients.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Ingredients } from '../models/ingredients';
+import { Recipe } from '../models/recipe';
 
 @Component({
   selector: 'app-ingredients',
@@ -9,26 +10,19 @@ import { Ingredients } from '../models/ingredients';
 })
 export class IngredientsComponent implements OnInit {
   @Input() pageNumber: number;
+  @Input() recipes: Recipe[];
 
   ingredients: Ingredients[] = [];
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
-    this.getIngredients(this.pageNumber);
-  }
-
-  getIngredients(recipeId: number): void {
-    this.ingredientsService.getIngredients(recipeId).subscribe(ingredient => {
-      this.ingredients = ingredient;
-      console.log('ingredients', this.ingredients);
-    });
   }
 
   getHalfIngredientsFromRecipe(half: number) {
     let ingredientTotal = 0;
     const ingredientList = [];
 
-    for (const ingredient of this.ingredients) {
+    for (const ingredient of this.recipes[this.pageNumber - 1].ingredients) {
       if (ingredientTotal % 2 === half) {
         ingredientList.push(ingredient);
       }

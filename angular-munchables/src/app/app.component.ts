@@ -1,17 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Recipe } from './models/recipe';
+import { RecipeService } from './recipe/recipe.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-munchables';
   leftPageNumber = 1;
   rightPageNumber = 2;
-  numberOfRecipes = 5;
+  numberOfRecipes = 2;
+  recipes: Recipe[];
+  constructor(private recipeService: RecipeService) { }
 
-  turnPage(direction: string) {
+  ngOnInit() {
+    this.getAllRecipes();
+  }
+
+  getAllRecipes(): void {
+    this.recipeService.getAllRecipes().subscribe(recipe => {
+      this.recipes = recipe;
+      this.recipes.push(new Recipe());
+      this.numberOfRecipes = this.recipes.length;
+      console.log('recipes', this.recipes);
+    });
+  }
+
+  turnPage(direction: string): void {
     if (direction === 'left') {
       this.leftPageNumber -= 2;
       this.rightPageNumber -= 2;

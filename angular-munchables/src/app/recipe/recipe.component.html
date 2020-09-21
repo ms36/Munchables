@@ -1,5 +1,5 @@
 <div class="container">
-  <p>{{this.recipe.name}}</p>
+  <p>{{this.recipes[this.pageNumber - 1].name}}</p>
 </div>
-<app-ingredients [pageNumber]="pageNumber"></app-ingredients>
-<app-steps [pageNumber]="pageNumber"></app-steps>
+<app-ingredients [pageNumber]="pageNumber" [recipes]="recipes"></app-ingredients>
+<app-steps [pageNumber]="pageNumber" [recipes]="recipes"></app-steps>

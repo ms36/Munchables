@@ -1,5 +1,8 @@
 package com.skillstorm.controllers;
 
+import java.util.List;
+
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +19,20 @@ import com.skillstorm.services.RecipeService;
 @RequestMapping("/recipe")
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class RecipeController {
+	
+	private static final Logger log = Logger.getLogger(RecipeController.class);
 
 	@Autowired
 	RecipeService recipeService;
+	
+	@GetMapping
+	public ResponseEntity<List<Recipe>> getAllRecipes() {
+		log.info("getAllRecipes");
+		
+		List<Recipe> recipe = recipeService.findAll();
+		
+		return new ResponseEntity<>(recipe, HttpStatus.OK);	
+	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {

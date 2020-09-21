@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Recipe } from '../models/recipe';
 import { Steps } from '../models/step';
 import { StepService } from './step.service';
 
@@ -9,19 +10,12 @@ import { StepService } from './step.service';
 })
 export class StepsComponent implements OnInit {
   @Input() pageNumber: number;
+  @Input() recipes: Recipe[];
 
   steps: Steps[] = [];
   constructor(private stepService: StepService) { }
 
   ngOnInit() {
-    this.getSteps(this.pageNumber);
-  }
-
-  getSteps(recipeId: number): void {
-    this.stepService.getSteps(recipeId).subscribe(step => {
-      this.steps = step;
-      console.log('steps', this.steps);
-    });
   }
 
 }

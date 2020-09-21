@@ -16,4 +16,8 @@ export class RecipeService {
   getRecipe(recipeId: number): Observable<any> {
     return this.http.get<any>(this.url + recipeId);
   }
+
+  getAllRecipes(): Observable<any> {
+    return this.http.get<any>(this.url);
+  }
 }
