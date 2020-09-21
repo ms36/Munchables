@@ -13,6 +13,7 @@ export class IngredientsComponent implements OnInit {
   @Input() recipes: Recipe[];
 
   ingredients: Ingredients[] = [];
+  isEditable = false;
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
@@ -31,4 +32,26 @@ export class IngredientsComponent implements OnInit {
     return ingredientList;
   }
 
+  delete(ingredientName: string) {
+    const ingredients = this.recipes[this.pageNumber - 1].ingredients;
+    this.recipes[this.pageNumber - 1].ingredients = ingredients.filter(
+                                                    ingredient => ingredient.name !== ingredientName);
+  }
+
+  add(ingredientName = '') {
+    if (ingredientName !== '') {
+      this.recipes[this.pageNumber - 1].ingredients.push({id: null, name: ingredientName, recipeId: null});
+    }
+  }
+
+  toggleEdit(ingredientName = '') {
+    this.isEditable = !this.isEditable;
+    if (this.isEditable) {
+      setTimeout(() => document.getElementById('textInput').focus(), 0);
+    }
+    if (!this.isEditable) {
+      this.add(ingredientName);
+    }
+    console.log('ingredients', this.recipes[this.pageNumber - 1].ingredients);
+  }
 }

@@ -2,12 +2,16 @@
   <table>
     <th>
       <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(0)">
-        <td>{{ingredient.name}}</td>
+        <td (dblclick)="delete(ingredient.name)">{{ingredient.name}}</td>
       </tr>
     </th>
     <th>
       <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(1)">
-        <td>{{ingredient.name}}</td>
+        <td (dblclick)="delete(ingredient.name)">{{ingredient.name}}</td>
+      </tr>
+      <tr>
+        <td *ngIf="!this.isEditable" (dblclick)="toggleEdit()">(Add Ingredient)</td>
+        <input id="textInput" *ngIf="this.isEditable" (blur)="toggleEdit(ingredientName.value)" #ingredientName>
       </tr>
     </th>
   </table>

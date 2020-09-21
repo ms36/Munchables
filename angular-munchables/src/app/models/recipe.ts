@@ -11,7 +11,7 @@ export class Recipe {
     const ingredient = new Ingredients();
     const step = new Steps();
     this.id = null;
-    this.name = 'New Recipe';
+    this.name = '(New Recipe)';
     this.ingredients = [ingredient];
     this.steps = [step];
   }
