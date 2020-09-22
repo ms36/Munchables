@@ -36,11 +36,19 @@ export class IngredientsComponent implements OnInit {
     const ingredients = this.recipes[this.pageNumber - 1].ingredients;
     this.recipes[this.pageNumber - 1].ingredients = ingredients.filter(
                                                     ingredient => ingredient.name !== ingredientName);
+    const ingredientId = ingredients.filter(ingredient => ingredient.name === ingredientName);
+
+    if (ingredientId[0].id !== null) {
+      this.ingredientsService.deleteIngredient(ingredientId[0].id).subscribe();
+    }
   }
 
   add(ingredientName = '') {
-    if (ingredientName !== '') {
-      this.recipes[this.pageNumber - 1].ingredients.push({id: null, name: ingredientName, recipeId: null});
+    // If ingredientName does not contains all spaces or is not empty
+    if (ingredientName.search('^\\s*$') !== 0) {
+      this.recipes[this.pageNumber - 1].ingredients.push({id: null, name: ingredientName});
+      this.ingredientsService.addIngredient({id: null, name: ingredientName},
+                                            this.recipes[this.pageNumber - 1].id).subscribe();
     }
   }
 
@@ -52,6 +60,5 @@ export class IngredientsComponent implements OnInit {
     if (!this.isEditable) {
       this.add(ingredientName);
     }
-    console.log('ingredients', this.recipes[this.pageNumber - 1].ingredients);
   }
 }

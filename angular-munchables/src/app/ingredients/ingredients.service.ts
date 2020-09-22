@@ -1,3 +1,4 @@
+import { Ingredients } from './../models/ingredients';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -6,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class IngredientsService {
-  private url = 'http://localhost:8080/ingredient/';
+  private url = 'http://localhost:8080/ingredients/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,5 +16,13 @@ export class IngredientsService {
 
   getIngredients(recipeId: number): Observable<any> {
     return this.http.get<any>(this.url + recipeId);
+  }
+
+  addIngredient(ingredient: Ingredients, recipeId: number): Observable<Ingredients> {
+    return this.http.post<Ingredients>(this.url + recipeId, ingredient, this.httpOptions);
+  }
+
+  deleteIngredient(ingredientId: number): Observable<Ingredients> {
+    return this.http.delete<Ingredients>(this.url + ingredientId, this.httpOptions);
   }
 }

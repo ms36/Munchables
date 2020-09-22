@@ -25,6 +25,8 @@ public class RecipeService {
 	}
 	
 	public Recipe findById(int id) {
+		log.info("find recipe with id: " + id);
+		
 		Optional<Recipe> recipe = recipeRepository.findById(id);
 		
 		if(recipe.isPresent()) {

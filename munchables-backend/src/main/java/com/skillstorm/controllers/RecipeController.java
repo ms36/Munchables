@@ -34,7 +34,7 @@ public class RecipeController {
 		return new ResponseEntity<>(recipe, HttpStatus.OK);	
 	}
 	
-	@GetMapping(value = "/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {
 		
 		Recipe recipe = recipeService.findById(id);
@@ -45,4 +45,5 @@ public class RecipeController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}		
 	}
+	
 }

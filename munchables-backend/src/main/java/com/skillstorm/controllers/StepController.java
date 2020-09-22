@@ -23,7 +23,7 @@ public class StepController {
 	@Autowired
 	StepService stepService;
 	
-	@GetMapping(value = "/{recipeId}")
+	@GetMapping("/{recipeId}")
 	public ResponseEntity<List<Step>> getAllStepsFromRecipe(@PathVariable int recipeId) {
 		log.info("getAllStepsFromRecipe");
 		
