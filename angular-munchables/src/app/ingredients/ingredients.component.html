@@ -1,17 +1,56 @@
-<div class="container">
+<div class="container"
+  (mouseover)="showAddIngredient=true"
+  (mouseout)="checkToHideInput()"
+>
   <table>
     <th>
-      <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(0)">
-        <td (dblclick)="delete(ingredient.name)">{{ingredient.name}}</td>
+      <!-- Left Column -->
+      <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(0); let i=index">
+        <div class="icon-container"
+          (mouseover)="showLeftDeleteIngredient[i]=true"
+          (mouseout)="showLeftDeleteIngredient[i]=false"
+        >
+          <div [hidden]="!showLeftDeleteIngredient[i]">
+            <i class="material-icons" (click)="delete(ingredient.name)">delete</i>
+          </div>
+        </div>
+        <td (mouseover)="showLeftDeleteIngredient[i]=true"
+          (mouseout)="showLeftDeleteIngredient[i]=false"
+        >
+          {{ingredient.name}}
+        </td>
       </tr>
     </th>
     <th>
-      <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(1)">
-        <td (dblclick)="delete(ingredient.name)">{{ingredient.name}}</td>
+      <!-- Right Column -->
+      <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(1); let i=index">
+        <td (mouseover)="showRightDeleteIngredient[i]=true"
+          (mouseout)="showRightDeleteIngredient[i]=false"
+        >
+          {{ingredient.name}}
+        </td>
+        <div class="icon-container"
+          (mouseover)="showRightDeleteIngredient[i]=true"
+          (mouseout)="showRightDeleteIngredient[i]=false"
+        >
+          <div [hidden]="!showRightDeleteIngredient[i]">
+            <i class="material-icons" (click)="delete(ingredient.name)">delete</i>
+          </div>
+        </div>
       </tr>
-      <tr>
-        <td *ngIf="!this.isEditable" (dblclick)="toggleEdit()">(Add Ingredient)</td>
-        <input id="textInput" *ngIf="this.isEditable" (blur)="toggleEdit(ingredientName.value)" #ingredientName>
+      <!-- Add Ingredient -->
+      <tr [hidden]="!showAddIngredient">
+        <td *ngIf="!this.isAddIngredientEditable" (click)="toggleEdit()">
+          <i class="material-icons">create</i>
+        </td>
+        <div class="input-container" *ngIf="this.isAddIngredientEditable">
+          <i class="material-icons icon-add" (click)="toggleEdit(ingredientName.value)">add</i>
+          <input id="textInput"
+            #ingredientName
+            (keyup.enter)="toggleEdit(ingredientName.value)"
+          >
+          <i class="material-icons icon-add" (click)="this.isAddIngredientEditable=false">clear</i>
+        </div>
       </tr>
     </th>
   </table>

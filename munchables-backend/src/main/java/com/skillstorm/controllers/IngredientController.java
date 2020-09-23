@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.beans.Ingredient;
-import com.skillstorm.beans.Recipe;
 import com.skillstorm.services.IngredientService;
 
 
@@ -31,17 +30,18 @@ private static final Logger log = Logger.getLogger(IngredientController.class);
 	@Autowired
 	IngredientService ingredientService;
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Ingredient> getIngredienteById(@PathVariable int id) {
-		log.info("getIngredienteById");
-		Ingredient ingredient = ingredientService.findById(id);
-		
-		if (ingredient != null) {
-			return new ResponseEntity<>(ingredient, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}		
-	}
+//	@GetMapping("/{ingredientId}")
+//	public ResponseEntity<Ingredient> getIngredienteById(@PathVariable int ingredientId) {
+//		log.info("getIngredienteById");
+//		
+//		Ingredient ingredient = ingredientService.findById(ingredientId);
+//		
+//		if (ingredient != null) {
+//			return new ResponseEntity<>(ingredient, HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}		
+//	}
 	
 	@GetMapping("/{recipeId}")
 	public ResponseEntity<List<Ingredient>> getAllIngredientsFromRecipe(@PathVariable int recipeId) {
@@ -72,6 +72,7 @@ private static final Logger log = Logger.getLogger(IngredientController.class);
 	
 	@DeleteMapping("/{ingredientId}")
 	public ResponseEntity<Ingredient> deleteIngredient(@PathVariable int ingredientId) {
+		log.info("deleteIngredient");
 		
 		ingredientService.deleteIngredient(ingredientId);
 		return new ResponseEntity<>(HttpStatus.OK);

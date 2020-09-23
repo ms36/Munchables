@@ -1,3 +1,47 @@
 table {
   text-align: left;
 }
+th {
+  font-weight: 100;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 200px;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+.icon-add {
+  font-weight: 900;
+}
+
+.icon-container {
+  width: 24px;
+  height: 24px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 26px;
+
+}
+
+input {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  font-family: 'Courgette', cursive;
+  font-size: 1.0em;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  border-bottom-style: dotted;;
+}
+

@@ -14,6 +14,11 @@ export class IngredientsComponent implements OnInit {
 
   ingredients: Ingredients[] = [];
   isEditable = false;
+  isAddIngredientEditable = false;
+  isUpdateIngredientEditable = false;
+  showAddIngredient = false;
+  showLeftDeleteIngredient = [false, false, false, false, false, false];
+  showRightDeleteIngredient = [false, false, false, false, false, false];
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
@@ -44,21 +49,29 @@ export class IngredientsComponent implements OnInit {
   }
 
   add(ingredientName = '') {
-    // If ingredientName does not contains all spaces or is not empty
+    // If ingredientName does not contain all spaces or is not empty
     if (ingredientName.search('^\\s*$') !== 0) {
-      this.recipes[this.pageNumber - 1].ingredients.push({id: null, name: ingredientName});
+      let ingredient: Ingredients;
       this.ingredientsService.addIngredient({id: null, name: ingredientName},
-                                            this.recipes[this.pageNumber - 1].id).subscribe();
+                                            this.recipes[this.pageNumber - 1].id)
+                                            .subscribe(i => {ingredient = i;
+                                                             this.recipes[this.pageNumber - 1].ingredients.push(ingredient); });
     }
   }
 
   toggleEdit(ingredientName = '') {
-    this.isEditable = !this.isEditable;
-    if (this.isEditable) {
+    this.isAddIngredientEditable = !this.isAddIngredientEditable;
+    if (this.isAddIngredientEditable) {
       setTimeout(() => document.getElementById('textInput').focus(), 0);
     }
-    if (!this.isEditable) {
+    if (!this.isAddIngredientEditable) {
       this.add(ingredientName);
+    }
+  }
+
+  checkToHideInput() {
+    if (this.showAddIngredient && !this.isAddIngredientEditable) {
+      this.showAddIngredient = false;
     }
   }
 }

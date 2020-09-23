@@ -40,7 +40,7 @@ private static final Logger log = Logger.getLogger(IngredientService.class);
 	}
 	
 	public Ingredient addNewIngredientToRecipe(Ingredient ingredient, int recipeId) {
-		log.info("add " + ingredient + " ToRecipe");
+		log.info("add " + ingredient.getName() + " ToRecipe");
 		
 		Optional<Recipe> recipe = recipeRepository.findById(recipeId);
 		if (recipe.isPresent()) {
