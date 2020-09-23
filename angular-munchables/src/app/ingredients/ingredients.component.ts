@@ -13,10 +13,12 @@ export class IngredientsComponent implements OnInit {
   @Input() recipes: Recipe[];
 
   ingredients: Ingredients[] = [];
-  isEditable = false;
   isAddIngredientEditable = false;
-  isUpdateIngredientEditable = false;
+  isUpdateLeftIngredientEditable = [false, false, false, false, false, false];
+  isUpdateRightIngredientEditable = [false, false, false, false, false, false];
   showAddIngredient = false;
+  // TODO: the size of these arrays should dependant on half
+  // the number ingredients in a recipe and not hard coded
   showLeftDeleteIngredient = [false, false, false, false, false, false];
   showRightDeleteIngredient = [false, false, false, false, false, false];
   constructor(private ingredientsService: IngredientsService) { }
@@ -59,13 +61,23 @@ export class IngredientsComponent implements OnInit {
     }
   }
 
-  toggleEdit(ingredientName = '') {
+  toggleAddIngredient(ingredientName = '') {
     this.isAddIngredientEditable = !this.isAddIngredientEditable;
     if (this.isAddIngredientEditable) {
       setTimeout(() => document.getElementById('textInput').focus(), 0);
     }
     if (!this.isAddIngredientEditable) {
       this.add(ingredientName);
+    }
+  }
+
+  updateIngredient(index: number, ingredientName: string, leftOrRightColumn: number) {
+    if (leftOrRightColumn === 0) {
+      this.recipes[this.pageNumber - 1].ingredients[index * 2].name = ingredientName;
+      this.isUpdateLeftIngredientEditable[index] = false;
+    } else {
+      this.recipes[this.pageNumber - 1].ingredients[(index * 2) + 1].name = ingredientName;
+      this.isUpdateRightIngredientEditable[index] = false;
     }
   }
 
