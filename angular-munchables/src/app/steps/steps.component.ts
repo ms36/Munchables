@@ -13,6 +13,7 @@ export class StepsComponent implements OnInit {
   @Input() recipes: Recipe[];
 
   steps: Steps[] = [];
+  isAddStepEditable = false;
   constructor(private stepService: StepService) { }
 
   ngOnInit() {

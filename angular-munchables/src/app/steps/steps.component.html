@@ -1,7 +1,14 @@
-<div class="component">
+<div class="component"
+  (mouseover)="isAddStepEditable=true"
+  (mouseout)="isAddStepEditable=false"
+>
   <div *ngFor="let step of this.recipes[this.pageNumber - 1].steps; let i = index">
     <p>{{i + 1}}. {{step.stepProcess}}</p>
   </div>
-  <div>(Add Step)</div>
+  <div class="icon-container">
+    <div [hidden]="!isAddStepEditable">
+      <i class="material-icons">create</i>
+    </div>
+  </div>
 </div>
 

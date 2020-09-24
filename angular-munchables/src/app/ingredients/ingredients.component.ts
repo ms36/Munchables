@@ -50,7 +50,7 @@ export class IngredientsComponent implements OnInit {
     }
   }
 
-  add(ingredientName = '') {
+  addIngredient(ingredientName = '') {
     // If ingredientName does not contain all spaces or is not empty
     if (ingredientName.search('^\\s*$') !== 0) {
       let ingredient: Ingredients;
@@ -67,7 +67,7 @@ export class IngredientsComponent implements OnInit {
       setTimeout(() => document.getElementById('textInput').focus(), 0);
     }
     if (!this.isAddIngredientEditable) {
-      this.add(ingredientName);
+      this.addIngredient(ingredientName);
     }
   }
 
