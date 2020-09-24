@@ -5,13 +5,19 @@
   <table>
     <th>
       <!-- Left Column -->
-      <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(0); let i=index">
+      <tr *ngFor="let ingredient of getHalfIngredientsFromRecipe(0); let i=index">
         <div class="icon-container"
-          (mouseover)="showLeftDeleteIngredient[i]=true"
+          (mouseover)="showLeftDeleteIngredient[i]=true && !isUpdateLeftIngredientEditable[i]"
           (mouseout)="showLeftDeleteIngredient[i]=false"
         >
           <div [hidden]="!showLeftDeleteIngredient[i]">
             <i class="material-icons" (click)="delete(ingredient.name)">delete</i>
+          </div>
+          <div [hidden]="!isUpdateLeftIngredientEditable[i]">
+            <i class="material-icons icon-add"
+              (click)="updateIngredient(i, updateIngredientName.value, 0)">
+              check
+            </i>
           </div>
         </div>
         <!-- Show ingredient -->
@@ -25,16 +31,18 @@
         <!-- Edit ingredient -->
         <td *ngIf="isUpdateLeftIngredientEditable[i]" (mouseover)="showLeftDeleteIngredient[i]=false">
           <div class="input-container">
-            <i class="material-icons icon-add" (click)="updateIngredient(i, updateIngredientName.value, 0)">check</i>
-            <input value="{{ingredient.name}}" #updateIngredientName>
-            <i class="material-icons icon-add" (click)="this.isUpdateLeftIngredientEditable[i]=false">clear</i>
+            <input class="input-edit"
+              value="{{ingredient.name}}"
+              (dblclick)="isUpdateLeftIngredientEditable[i]=false"
+              #updateIngredientName
+            >
           </div>
         </td>
       </tr>
     </th>
     <th>
       <!-- Right Column -->
-      <tr *ngFor="let ingredient of this.getHalfIngredientsFromRecipe(1); let i=index">
+      <tr *ngFor="let ingredient of getHalfIngredientsFromRecipe(1); let i=index">
         <!-- Show ingredient -->
         <td *ngIf="!isUpdateRightIngredientEditable[i]"
           (mouseover)="showRightDeleteIngredient[i]=true"
@@ -46,9 +54,14 @@
         <!-- Edit ingredient -->
         <td *ngIf="isUpdateRightIngredientEditable[i]" (mouseover)="showRightDeleteIngredient[i]=false">
           <div class="input-container">
-            <i class="material-icons icon-add" (click)="updateIngredient(i, updateIngredientName.value, 1)">check</i>
-            <input value="{{ingredient.name}}" #updateIngredientName>
-            <i class="material-icons icon-add" (click)="this.isUpdateRightIngredientEditable[i]=false">clear</i>
+            <input value="{{ingredient.name}}"
+              (dblclick)="isUpdateRightIngredientEditable[i]=false"
+              #updateIngredientName
+            >
+            <i class="material-icons icon-add"
+              (click)="updateIngredient(i, updateIngredientName.value, 1)">
+              check
+            </i>
           </div>
         </td>
         <div class="icon-container"
@@ -62,16 +75,16 @@
       </tr>
       <!-- Add Ingredient -->
       <tr [hidden]="!showAddIngredient">
-        <td *ngIf="!this.isAddIngredientEditable" (click)="toggleAddIngredient()">
+        <td *ngIf="!isAddIngredientEditable" (click)="toggleAddIngredient()">
           <i class="material-icons">create</i>
         </td>
-        <div class="input-container" *ngIf="this.isAddIngredientEditable">
-          <i class="material-icons icon-add" (click)="toggleAddIngredient(addIngredientName.value)">add</i>
+        <div class="input-container" *ngIf="isAddIngredientEditable">
           <input id="textInput"
             #addIngredientName
             (keyup.enter)="toggleAddIngredient(addIngredientName.value)"
+            (dblclick)="isAddIngredientEditable=false"
           >
-          <i class="material-icons icon-add" (click)="this.isAddIngredientEditable=false">clear</i>
+          <i class="material-icons icon-add" (click)="toggleAddIngredient(addIngredientName.value)">add</i>
         </div>
       </tr>
     </th>
