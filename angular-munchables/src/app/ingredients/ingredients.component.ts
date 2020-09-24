@@ -71,14 +71,26 @@ export class IngredientsComponent implements OnInit {
     }
   }
 
+  // TODO: update this function to have the inputs auto-focus when revealed by user
+  // This will be similar to toggleAddIngredient() above but needs to account for
+  // left and right columns as well then added to the (dblclick) in input element
+  toggleUpdateIngredient() {
+    setTimeout(() => document.getElementById('input-edit-text').focus(), 0);
+  }
+
   updateIngredient(index: number, ingredientName: string, leftOrRightColumn: number) {
+    let ingredientId: number;
     if (leftOrRightColumn === 0) {
       this.recipes[this.pageNumber - 1].ingredients[index * 2].name = ingredientName;
       this.isUpdateLeftIngredientEditable[index] = false;
+      ingredientId = this.recipes[this.pageNumber - 1].ingredients[index * 2].id;
     } else {
       this.recipes[this.pageNumber - 1].ingredients[(index * 2) + 1].name = ingredientName;
       this.isUpdateRightIngredientEditable[index] = false;
+      ingredientId = this.recipes[this.pageNumber - 1].ingredients[(index * 2) + 1].id;
     }
+    const recipeId = this.recipes[this.pageNumber - 1].id;
+    this.ingredientsService.saveIngredient({id: ingredientId, name: ingredientName}, recipeId).subscribe();
   }
 
   checkToHideInput() {

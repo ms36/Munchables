@@ -56,7 +56,7 @@ private static final Logger log = Logger.getLogger(IngredientController.class);
 	public ResponseEntity<Ingredient> addNewIngredientToRecipe(@RequestBody Ingredient ingredient, @PathVariable int recipeId) {
 		log.info("addNewIngredientToRecipe");
 		
-		Ingredient newIngredient = ingredientService.addNewIngredientToRecipe(ingredient, recipeId);
+		Ingredient newIngredient = ingredientService.saveIngredientByRecipeId(ingredient, recipeId);
 		
 		if (newIngredient == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -65,9 +65,15 @@ private static final Logger log = Logger.getLogger(IngredientController.class);
 	}
 	
 	@PutMapping("/{recipeId}")
-	public ResponseEntity<Ingredient> saveIngredientsByRecipeId(@RequestBody Ingredient ingredient,@PathVariable int recipeId) {
+	public ResponseEntity<Ingredient> saveIngredientByRecipeId(@RequestBody Ingredient ingredient,@PathVariable int recipeId) {
+		log.info("saveIngredientsByRecipeId");
 		
-		return new ResponseEntity<>(HttpStatus.OK);		
+		Ingredient newIngredient = ingredientService.saveIngredientByRecipeId(ingredient, recipeId);
+		
+		if (newIngredient == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(newIngredient, HttpStatus.OK);	
 	}
 	
 	@DeleteMapping("/{ingredientId}")

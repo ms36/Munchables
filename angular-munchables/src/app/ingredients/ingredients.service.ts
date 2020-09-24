@@ -22,6 +22,10 @@ export class IngredientsService {
     return this.http.post<Ingredients>(this.url + recipeId, ingredient, this.httpOptions);
   }
 
+  saveIngredient(ingredient: Ingredients, recipeId: number): Observable<Ingredients> {
+    return this.http.put<Ingredients>(this.url + recipeId, ingredient, this.httpOptions);
+  }
+
   deleteIngredient(ingredientId: number): Observable<Ingredients> {
     return this.http.delete<Ingredients>(this.url + ingredientId, this.httpOptions);
   }

@@ -39,8 +39,8 @@ private static final Logger log = Logger.getLogger(IngredientService.class);
 		return ingredientRepository.findAllIngredientsFromRecipe(recipeId);
 	}
 	
-	public Ingredient addNewIngredientToRecipe(Ingredient ingredient, int recipeId) {
-		log.info("add " + ingredient.getName() + " ToRecipe");
+	public Ingredient saveIngredientByRecipeId(Ingredient ingredient, int recipeId) {
+		log.info(ingredient.getName() + "saved ToRecipe");
 		
 		Optional<Recipe> recipe = recipeRepository.findById(recipeId);
 		if (recipe.isPresent()) {

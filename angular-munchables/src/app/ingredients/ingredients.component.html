@@ -15,7 +15,7 @@
           </div>
           <div [hidden]="!isUpdateLeftIngredientEditable[i]">
             <i class="material-icons icon-add"
-              (click)="updateIngredient(i, updateIngredientName.value, 0)">
+              (click)="updateIngredient(i, ingredient.name, 0)">
               check
             </i>
           </div>
@@ -31,10 +31,11 @@
         <!-- Edit ingredient -->
         <td *ngIf="isUpdateLeftIngredientEditable[i]" (mouseover)="showLeftDeleteIngredient[i]=false">
           <div class="input-container">
-            <input class="input-edit"
+            <input id="input-edit-text"
               value="{{ingredient.name}}"
               (dblclick)="isUpdateLeftIngredientEditable[i]=false"
-              #updateIngredientName
+              (keyup.enter)="updateIngredient(i, ingredient.name, 0)"
+              [(ngModel)]="ingredient.name"
             >
           </div>
         </td>
@@ -54,12 +55,14 @@
         <!-- Edit ingredient -->
         <td *ngIf="isUpdateRightIngredientEditable[i]" (mouseover)="showRightDeleteIngredient[i]=false">
           <div class="input-container">
-            <input value="{{ingredient.name}}"
+            <input id="input-edit-text"
+              value="{{ingredient.name}}"
               (dblclick)="isUpdateRightIngredientEditable[i]=false"
-              #updateIngredientName
+              (keyup.enter)="updateIngredient(i, updateRightIngredientName.value, 1)"
+              #updateRightIngredientName
             >
             <i class="material-icons icon-add"
-              (click)="updateIngredient(i, updateIngredientName.value, 1)">
+              (click)="updateIngredient(i, updateRightIngredientName.value, 1)">
               check
             </i>
           </div>
