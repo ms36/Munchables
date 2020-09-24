@@ -13,3 +13,22 @@ body {
   justify-content: center;
   flex-direction: column;
 }
+
+input {
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  font-family: 'Courgette', cursive;
+  font-size: 1.0em;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  border-bottom-style: dotted;;
+}
+
+i:hover {
+  cursor: pointer;
+}

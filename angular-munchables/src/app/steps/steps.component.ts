@@ -14,9 +14,19 @@ export class StepsComponent implements OnInit {
 
   steps: Steps[] = [];
   isAddStepEditable = false;
+  showAddStep = false;
   constructor(private stepService: StepService) { }
 
   ngOnInit() {
   }
 
+  toggleAddStep() {
+    this.isAddStepEditable = !this.isAddStepEditable;
+  }
+
+  checkToHideInput() {
+    if (this.showAddStep && !this.isAddStepEditable) {
+      this.showAddStep = false;
+    }
+  }
 }

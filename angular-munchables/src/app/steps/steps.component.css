@@ -8,3 +8,11 @@
   width: 24px;
   height: 24px;
 }
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row;
+  height: 26px;
+}

@@ -1,13 +1,27 @@
 <div class="component"
-  (mouseover)="isAddStepEditable=true"
-  (mouseout)="isAddStepEditable=false"
+  (mouseover)="showAddStep=true"
+  (mouseout)="checkToHideInput()"
 >
   <div *ngFor="let step of this.recipes[this.pageNumber - 1].steps; let i = index">
     <p>{{i + 1}}. {{step.stepProcess}}</p>
   </div>
-  <div class="icon-container">
-    <div [hidden]="!isAddStepEditable">
-      <i class="material-icons">create</i>
+  <!-- Add Step -->
+  <div class="input-container">
+    <div [hidden]="!showAddStep">
+      <div *ngIf="!isAddStepEditable" (click)="toggleAddStep()">
+        <i class="material-icons">create</i>
+      </div>
+      <div class="input-container" *ngIf="isAddStepEditable">
+        <i class="material-icons icon-add"
+          (click)="toggleAddStep()">
+          add
+        </i>
+        <input id="textInput"
+          #addStepProcess
+          (keyup.enter)="toggleAddStep()"
+          (dblclick)="isAddStepEditable=false"
+        >
+      </div>
     </div>
   </div>
 </div>
