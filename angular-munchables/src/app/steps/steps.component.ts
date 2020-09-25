@@ -20,8 +20,24 @@ export class StepsComponent implements OnInit {
   ngOnInit() {
   }
 
+  addStepProcess(addStepProcess = '') {
+    console.log('added new step process: ', addStepProcess);
+  }
+
   toggleAddStep() {
     this.isAddStepEditable = !this.isAddStepEditable;
+  }
+
+  toggleAddStepProcess(stepProcess = '') {
+    console.log('toggleAddIngredient');
+    this.isAddStepEditable = !this.isAddStepEditable;
+    if (this.isAddStepEditable) {
+      console.log('focus');
+      setTimeout(() => document.getElementById('textInput').focus(), 0);
+    }
+    if (!this.isAddStepEditable) {
+      this.addStepProcess(stepProcess);
+    }
   }
 
   checkToHideInput() {

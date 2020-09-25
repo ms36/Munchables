@@ -80,16 +80,18 @@ export class IngredientsComponent implements OnInit {
 
   updateIngredient(index: number, ingredientName: string, leftOrRightColumn: number) {
     let ingredientId: number;
-    if (leftOrRightColumn === 0) {
-      this.recipes[this.pageNumber - 1].ingredients[index * 2].name = ingredientName;
-      this.isUpdateLeftIngredientEditable[index] = false;
-      ingredientId = this.recipes[this.pageNumber - 1].ingredients[index * 2].id;
-    } else {
-      this.recipes[this.pageNumber - 1].ingredients[(index * 2) + 1].name = ingredientName;
-      this.isUpdateRightIngredientEditable[index] = false;
-      ingredientId = this.recipes[this.pageNumber - 1].ingredients[(index * 2) + 1].id;
-    }
+    let indexColumn = (index * 2) + 1;
     const recipeId = this.recipes[this.pageNumber - 1].id;
+
+    if (leftOrRightColumn === 0) {
+      indexColumn = index * 2;
+      this.isUpdateLeftIngredientEditable[index] = false;
+    } else {
+      this.isUpdateRightIngredientEditable[index] = false;
+    }
+    this.recipes[this.pageNumber - 1].ingredients[indexColumn].name = ingredientName;
+    ingredientId = this.recipes[this.pageNumber - 1].ingredients[indexColumn].id;
+
     this.ingredientsService.saveIngredient({id: ingredientId, name: ingredientName}, recipeId).subscribe();
   }
 

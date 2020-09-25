@@ -8,17 +8,17 @@
   <!-- Add Step -->
   <div class="input-container">
     <div [hidden]="!showAddStep">
-      <div *ngIf="!isAddStepEditable" (click)="toggleAddStep()">
+      <div *ngIf="!isAddStepEditable" (click)="toggleAddStepProcess()">
         <i class="material-icons">create</i>
       </div>
       <div class="input-container" *ngIf="isAddStepEditable">
         <i class="material-icons icon-add"
-          (click)="toggleAddStep()">
+          (click)="toggleAddStepProcess(addStepProcess.value)">
           add
         </i>
         <input id="textInput"
           #addStepProcess
-          (keyup.enter)="toggleAddStep()"
+          (keyup.enter)="toggleAddStepProcess(addStepProcess.value)"
           (dblclick)="isAddStepEditable=false"
         >
       </div>
