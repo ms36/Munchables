@@ -15,6 +15,7 @@
   justify-content: left;
   flex-direction: row;
   margin: 15px;
+  padding-right: 30px;
 }
 
 input {
