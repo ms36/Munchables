@@ -65,7 +65,7 @@ private static final Logger log = Logger.getLogger(IngredientController.class);
 	}
 	
 	@PutMapping("/{recipeId}")
-	public ResponseEntity<Ingredient> saveIngredientByRecipeId(@RequestBody Ingredient ingredient,@PathVariable int recipeId) {
+	public ResponseEntity<Ingredient> saveIngredientByRecipeId(@RequestBody Ingredient ingredient, @PathVariable int recipeId) {
 		log.info("saveIngredientsByRecipeId");
 		
 		Ingredient newIngredient = ingredientService.saveIngredientByRecipeId(ingredient, recipeId);

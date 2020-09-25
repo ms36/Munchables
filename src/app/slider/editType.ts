@@ -1,7 +1,0 @@
-export enum EditType {
-  RECIPENAME,
-  INGREDIENTS,
-  STEPS,
-  LEFTPAGE,
-  RIGHTPAGE
-}
