@@ -3,7 +3,39 @@
   (mouseout)="checkToHideInput()"
 >
   <div *ngFor="let step of this.recipes[this.pageNumber - 1].steps; let i = index">
-    <p>{{i + 1}}. {{step.stepProcess}}</p>
+    <div class="input-container">
+      <div class="icon-container"
+        (mouseover)="showDeleteStep[i]=true && !isUpdateStepEditable[i]"
+        (mouseout)="showDeleteStep[i]=false"
+      >
+        <div [hidden]="!showDeleteStep[i]">
+          <i class="material-icons" (click)="deleteStepProcess(step.id)">delete</i>
+        </div>
+        <div [hidden]="!isUpdateStepEditable[i]">
+          <i class="material-icons icon-add"
+            (click)="updateStepProcess(i, step.stepOrder, step.stepProcess)">
+            check
+          </i>
+        </div>
+      </div>
+      <div *ngIf="!isUpdateStepEditable[i]"
+        (mouseover)="showDeleteStep[i]=true"
+        (mouseout)="showDeleteStep[i]=false"
+        (dblclick)="isUpdateStepEditable[i]=true"
+      >
+        <p>{{i + 1}}. {{step.stepProcess}}</p>
+      </div>
+      <div *ngIf="isUpdateStepEditable[i]" (mouseover)="showDeleteStep[i]=false">
+        <div class="input-container">
+          <input id="input-edit-text"
+            value="{{step.stepProcess}}"
+            (dblclick)="isUpdateStepEditable[i]=false"
+            (keyup.enter)="updateStepProcess(i, step.stepOrder, step.stepProcess)"
+            [(ngModel)]="step.stepProcess"
+          >
+        </div>
+      </div>
+    </div>
   </div>
   <!-- Add Step -->
   <div class="input-container">

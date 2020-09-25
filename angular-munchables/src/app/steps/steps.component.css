@@ -15,4 +15,9 @@
   justify-content: left;
   flex-direction: row;
   height: 26px;
+  margin: 15px;
+}
+
+p {
+  margin: 0px;
 }

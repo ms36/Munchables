@@ -11,7 +11,7 @@
           (mouseout)="showLeftDeleteIngredient[i]=false"
         >
           <div [hidden]="!showLeftDeleteIngredient[i]">
-            <i class="material-icons" (click)="delete(ingredient.name)">delete</i>
+            <i class="material-icons" (click)="delete(ingredient.id)">delete</i>
           </div>
           <div [hidden]="!isUpdateLeftIngredientEditable[i]">
             <i class="material-icons icon-add"

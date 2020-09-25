@@ -39,17 +39,6 @@ export class IngredientsComponent implements OnInit {
     return ingredientList;
   }
 
-  delete(ingredientName: string) {
-    const ingredients = this.recipes[this.pageNumber - 1].ingredients;
-    this.recipes[this.pageNumber - 1].ingredients = ingredients.filter(
-                                                    ingredient => ingredient.name !== ingredientName);
-    const ingredientId = ingredients.filter(ingredient => ingredient.name === ingredientName);
-
-    if (ingredientId[0].id !== null) {
-      this.ingredientsService.deleteIngredient(ingredientId[0].id).subscribe();
-    }
-  }
-
   addIngredient(ingredientName = '') {
     // If ingredientName does not contain all spaces or is not empty
     if (ingredientName.search('^\\s*$') !== 0) {
@@ -59,6 +48,13 @@ export class IngredientsComponent implements OnInit {
                                             .subscribe(i => {ingredient = i;
                                                              this.recipes[this.pageNumber - 1].ingredients.push(ingredient); });
     }
+  }
+
+  delete(ingredientId: number) {
+    const ingredients = this.recipes[this.pageNumber - 1].ingredients;
+    this.ingredientsService.deleteIngredient(ingredientId).subscribe(() => {
+      this.recipes[this.pageNumber - 1].ingredients = ingredients.filter(
+      ingredient => ingredient.id !== ingredientId); });
   }
 
   toggleAddIngredient(ingredientName = '') {

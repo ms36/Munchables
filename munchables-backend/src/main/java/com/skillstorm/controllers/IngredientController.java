@@ -30,19 +30,6 @@ private static final Logger log = Logger.getLogger(IngredientController.class);
 	@Autowired
 	IngredientService ingredientService;
 	
-//	@GetMapping("/{ingredientId}")
-//	public ResponseEntity<Ingredient> getIngredienteById(@PathVariable int ingredientId) {
-//		log.info("getIngredienteById");
-//		
-//		Ingredient ingredient = ingredientService.findById(ingredientId);
-//		
-//		if (ingredient != null) {
-//			return new ResponseEntity<>(ingredient, HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}		
-//	}
-	
 	@GetMapping("/{recipeId}")
 	public ResponseEntity<List<Ingredient>> getAllIngredientsFromRecipe(@PathVariable int recipeId) {
 		log.info("getAllIngredientsFromRecipe");
