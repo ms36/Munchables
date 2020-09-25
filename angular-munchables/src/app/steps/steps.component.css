@@ -1,11 +1,11 @@
 .component {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   margin-bottom: 36px;
 }
 
 .icon-container {
-  width: 24px;
+  width: 36px;
   height: 24px;
 }
 
@@ -14,8 +14,14 @@
   align-items: center;
   justify-content: left;
   flex-direction: row;
-  height: 26px;
   margin: 15px;
+}
+
+input {
+  width: 550px;
+}
+.add-step-container {
+  height: 26px;
 }
 
 p {

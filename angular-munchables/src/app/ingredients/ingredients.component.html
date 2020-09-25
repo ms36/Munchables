@@ -15,7 +15,7 @@
           </div>
           <div [hidden]="!isUpdateLeftIngredientEditable[i]">
             <i class="material-icons icon-add"
-              (click)="updateIngredient(i, ingredient.name, 0)">
+              (click)="updateIngredient(i, ingredient.name, 'left')">
               check
             </i>
           </div>
@@ -24,17 +24,17 @@
         <td *ngIf="!isUpdateLeftIngredientEditable[i]"
           (mouseover)="showLeftDeleteIngredient[i]=true"
           (mouseout)="showLeftDeleteIngredient[i]=false"
-          (dblclick)="isUpdateLeftIngredientEditable[i]=true"
+          (dblclick)="toggleUpdateIngredient(i, 'left')"
         >
           {{ingredient.name}}
         </td>
         <!-- Edit ingredient -->
         <td *ngIf="isUpdateLeftIngredientEditable[i]" (mouseover)="showLeftDeleteIngredient[i]=false">
           <div class="input-container">
-            <input id="input-edit-text"
+            <input id="input-edit-ingredient"
               value="{{ingredient.name}}"
               (dblclick)="isUpdateLeftIngredientEditable[i]=false"
-              (keyup.enter)="updateIngredient(i, ingredient.name, 0)"
+              (keyup.enter)="updateIngredient(i, ingredient.name, 'left')"
               [(ngModel)]="ingredient.name"
             >
           </div>
@@ -48,21 +48,21 @@
         <td *ngIf="!isUpdateRightIngredientEditable[i]"
           (mouseover)="showRightDeleteIngredient[i]=true"
           (mouseout)="showRightDeleteIngredient[i]=false"
-          (dblclick)="isUpdateRightIngredientEditable[i]=true"
+          (dblclick)="toggleUpdateIngredient(i, 'right')"
         >
           {{ingredient.name}}
         </td>
         <!-- Edit ingredient -->
         <td *ngIf="isUpdateRightIngredientEditable[i]" (mouseover)="showRightDeleteIngredient[i]=false">
           <div class="input-container">
-            <input id="input-edit-text"
+            <input id="input-edit-ingredient"
               value="{{ingredient.name}}"
               (dblclick)="isUpdateRightIngredientEditable[i]=false"
-              (keyup.enter)="updateIngredient(i, updateRightIngredientName.value, 1)"
+              (keyup.enter)="updateIngredient(i, updateRightIngredientName.value, 'right')"
               #updateRightIngredientName
             >
             <i class="material-icons icon-add"
-              (click)="updateIngredient(i, updateRightIngredientName.value, 1)">
+              (click)="updateIngredient(i, updateRightIngredientName.value, 'right')">
               check
             </i>
           </div>

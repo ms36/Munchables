@@ -21,13 +21,13 @@
       <div *ngIf="!isUpdateStepEditable[i]"
         (mouseover)="showDeleteStep[i]=true"
         (mouseout)="showDeleteStep[i]=false"
-        (dblclick)="isUpdateStepEditable[i]=true"
+        (dblclick)="toggleUpdateStepProcess(i)"
       >
         <p>{{i + 1}}. {{step.stepProcess}}</p>
       </div>
       <div *ngIf="isUpdateStepEditable[i]" (mouseover)="showDeleteStep[i]=false">
         <div class="input-container">
-          <input id="input-edit-text"
+          <input id="input-edit-step"
             value="{{step.stepProcess}}"
             (dblclick)="isUpdateStepEditable[i]=false"
             (keyup.enter)="updateStepProcess(i, step.stepOrder, step.stepProcess)"
@@ -38,7 +38,7 @@
     </div>
   </div>
   <!-- Add Step -->
-  <div class="input-container">
+  <div class="input-container add-step-container">
     <div [hidden]="!showAddStep">
       <div *ngIf="!isAddStepEditable" (click)="toggleAddStepProcess()">
         <i class="material-icons">create</i>
@@ -48,7 +48,7 @@
           (click)="toggleAddStepProcess(addStepProcess.value)">
           add
         </i>
-        <input id="textInput"
+        <input id="input-add-step"
           #addStepProcess
           (keyup.enter)="toggleAddStepProcess(addStepProcess.value)"
           (dblclick)="isAddStepEditable=false"
@@ -57,4 +57,3 @@
     </div>
   </div>
 </div>
-

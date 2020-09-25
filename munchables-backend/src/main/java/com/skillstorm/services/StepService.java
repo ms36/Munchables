@@ -28,7 +28,7 @@ public class StepService {
 	}
 	
 	public Step saveStepByRecipeId(Step step, int recipeId) {
-		log.info("\"" + step.getStepProcess() + "\"" + " saved ToRecipe");
+		log.info("\"" + step.getStepProcess() + "\"" + " step, saved ToRecipe");
 		
 		Optional<Recipe> recipe = recipeRepository.findById(recipeId);
 		if (recipe.isPresent()) {

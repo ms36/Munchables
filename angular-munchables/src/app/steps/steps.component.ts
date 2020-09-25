@@ -57,14 +57,17 @@ export class StepsComponent implements OnInit {
       step => step.id !== stepId); });
   }
 
-  toggleAddStep() {
-    this.isAddStepEditable = !this.isAddStepEditable;
+  toggleUpdateStepProcess(index: number) {
+    this.isUpdateStepEditable[index] = !this.isUpdateStepEditable[index];
+    if (this.isUpdateStepEditable[index]) {
+      setTimeout(() => document.getElementById('input-edit-step').focus(), 0);
+    }
   }
 
   toggleAddStepProcess(stepProcess = '') {
     this.isAddStepEditable = !this.isAddStepEditable;
     if (this.isAddStepEditable) {
-      setTimeout(() => document.getElementById('textInput').focus(), 0);
+      setTimeout(() => document.getElementById('input-add-step').focus(), 0);
     }
     if (!this.isAddStepEditable) {
       this.addStepProcess(stepProcess);
