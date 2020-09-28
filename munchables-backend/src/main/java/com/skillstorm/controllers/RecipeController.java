@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,16 +37,36 @@ public class RecipeController {
 		return new ResponseEntity<>(recipe, HttpStatus.OK);	
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Recipe> getRecipeById(@PathVariable int id) {
+	@GetMapping("/{recipeId}")
+	public ResponseEntity<Recipe> getRecipeById(@PathVariable int recipeId) {
 		
-		Recipe recipe = recipeService.findById(id);
+		Recipe recipe = recipeService.findById(recipeId);
 		
 		if (recipe != null) {
 			return new ResponseEntity<>(recipe, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}		
+	}
+	
+	@PutMapping("/")
+	public ResponseEntity<Recipe> saveRecipe(@RequestBody Recipe recipe) {
+		log.info("saveRecipe");
+		
+		Recipe newRecipe = recipeService.saveRecipe(recipe);
+		
+		if (newRecipe == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(newRecipe, HttpStatus.OK);	
+	}
+	
+	@DeleteMapping("/recipeId")
+	public ResponseEntity<Recipe> deleteRecipe(@PathVariable int recipeId) {
+		log.info("deleteStep");
+		
+		recipeService.deleteRecipe(recipeId);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 }

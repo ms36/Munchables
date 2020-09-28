@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillstorm.beans.Ingredient;
 import com.skillstorm.beans.Step;
 import com.skillstorm.services.StepService;
 
@@ -63,7 +62,7 @@ public class StepController {
 	}
 	
 	@DeleteMapping("/{stepId}")
-	public ResponseEntity<Step> deleteIngredient(@PathVariable int stepId) {
+	public ResponseEntity<Step> deleteStep(@PathVariable int stepId) {
 		log.info("deleteStep");
 		
 		stepService.deleteStep(stepId);

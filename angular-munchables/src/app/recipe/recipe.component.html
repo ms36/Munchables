@@ -1,5 +1,40 @@
 <div class="container">
-  <p class="name">{{this.recipes[this.pageNumber - 1].name}}</p>
+  <div>
+    <!-- Display Recipe Name-->
+    <div class="input-container" *ngIf="!isUpdateRecipeNameEditable">
+      <div class="icon-container"></div>
+      <p class="name"
+
+        (dblclick)="toggleUpdateRecipeName()"
+        (mouseover)="showDeleteRecipeName=true"
+        (mouseout)="showDeleteRecipeName=false">
+        {{this.recipes[this.pageNumber - 1].name}}
+      </p>
+      <div class="icon-container"
+        (mouseover)="showDeleteRecipeName=true"
+        (mouseout)="showDeleteRecipeName=false"
+      >
+        <div [hidden]="!showDeleteRecipeName">
+          <i class="material-icons icon-big" (click)="deleteRecipe()">delete</i>
+        </div>
+      </div>
+    </div>
+    <!-- Update Recipe Name-->
+    <div class="input-container" *ngIf="isUpdateRecipeNameEditable">
+      <div class="icon-container">
+        <i class="material-icons icon-bold icon-big"
+          (click)="updateStepProcess()">
+          check
+        </i>
+      </div>
+      <input class="name" id="input-recipe-name"
+        (dblclick)="isUpdateRecipeNameEditable=false"
+        value="{{recipes[this.pageNumber - 1].name}}"
+        (keyup.enter)="updateStepProcess()"
+        [(ngModel)]="recipes[this.pageNumber - 1].name"
+      >
+    </div>
+  </div>
 </div>
 <app-ingredients [pageNumber]="pageNumber" [recipes]="recipes"></app-ingredients>
 <app-steps [pageNumber]="pageNumber" [recipes]="recipes"></app-steps>

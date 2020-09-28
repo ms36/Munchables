@@ -14,7 +14,7 @@
             <i class="material-icons" (click)="delete(ingredient.id)">delete</i>
           </div>
           <div [hidden]="!isUpdateLeftIngredientEditable[i]">
-            <i class="material-icons icon-add"
+            <i class="material-icons icon-bold"
               (click)="updateIngredient(i, ingredient.name, 'left')">
               check
             </i>
@@ -61,7 +61,7 @@
               (keyup.enter)="updateIngredient(i, updateRightIngredientName.value, 'right')"
               #updateRightIngredientName
             >
-            <i class="material-icons icon-add"
+            <i class="material-icons icon-bold"
               (click)="updateIngredient(i, updateRightIngredientName.value, 'right')">
               check
             </i>
@@ -87,7 +87,7 @@
             (keyup.enter)="toggleAddIngredient(addIngredientName.value)"
             (dblclick)="isAddIngredientEditable=false"
           >
-          <i class="material-icons icon-add"
+          <i class="material-icons icon-bold"
             (click)="toggleAddIngredient(addIngredientName.value)">
             add
           </i>

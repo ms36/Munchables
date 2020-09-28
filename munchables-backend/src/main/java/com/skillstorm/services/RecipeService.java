@@ -35,4 +35,20 @@ public class RecipeService {
 			return null;
 		}
 	}
+	
+	public Recipe saveRecipe(Recipe recipe) {
+		log.info("\"" + recipe.getName() + "\"" + " recipe saved");
+		
+		return recipeRepository.save(recipe);
+	}
+	
+	public void deleteRecipe(int recipeId) {
+		log.info("deleteRecipe with id: " + recipeId);
+		
+		Optional<Recipe> recipe = recipeRepository.findById(recipeId);
+		if (recipe.isPresent()) {
+			recipeRepository.delete(recipe.get());
+		}
+	}
+
 }

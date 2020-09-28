@@ -12,7 +12,7 @@
           <i class="material-icons" (click)="deleteStepProcess(step.id)">delete</i>
         </div>
         <div [hidden]="!isUpdateStepEditable[i]">
-          <i class="material-icons icon-add"
+          <i class="material-icons icon-bold"
             (click)="updateStepProcess(i, step.stepOrder, step.stepProcess)">
             check
           </i>
@@ -44,7 +44,7 @@
         <i class="material-icons">create</i>
       </div>
       <div class="input-container" *ngIf="isAddStepEditable">
-        <i class="material-icons icon-add"
+        <i class="material-icons icon-bold"
           (click)="toggleAddStepProcess(addStepProcess.value)">
           add
         </i>

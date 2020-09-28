@@ -42,12 +42,12 @@ export class StepsComponent implements OnInit {
 
   updateStepProcess(index: number, stepOrder: number, stepProcess: string) {
     const recipeId = this.recipes[this.pageNumber - 1].id;
+    const stepId = this.recipes[this.pageNumber - 1].steps[index].id;
 
     this.isUpdateStepEditable[index] = false;
     this.recipes[this.pageNumber - 1].steps[index].stepProcess = stepProcess;
-    const id = this.recipes[this.pageNumber - 1].steps[index].id;
 
-    this.stepService.saveStep({id, stepOrder, stepProcess}, recipeId).subscribe();
+    this.stepService.saveStep({id: stepId, stepOrder, stepProcess}, recipeId).subscribe();
   }
 
   deleteStepProcess(stepId: number) {
