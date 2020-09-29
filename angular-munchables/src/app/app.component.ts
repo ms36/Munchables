@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   getAllRecipes(): void {
     this.recipeService.getAllRecipes().subscribe(recipe => {
       this.recipes = recipe;
-      this.numberOfRecipes = this.recipes.length;
+      this.numberOfRecipes = this.recipes.length + 1;
       console.log('recipes', this.recipes);
     });
   }

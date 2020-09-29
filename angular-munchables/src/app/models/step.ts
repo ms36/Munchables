@@ -6,6 +6,6 @@ export class Steps {
   constructor() {
     this.id = null;
     this.stepOrder = null;
-    this.stepProcess = '';
+    this.stepProcess = null;
   }
 }

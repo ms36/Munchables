@@ -36,3 +36,7 @@ i:hover {
 .icon-bold {
   font-weight: 900;
 }
+
+.icon-big {
+  font-size: 40px;
+}

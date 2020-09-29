@@ -7,4 +7,21 @@
     [pageNumber]="this.pageNumber"
     [recipes]="this.recipes">
   </app-recipe>
+  <div class="container" *ngIf="!this.recipes[this.pageNumber - 1]">
+    <div *ngIf="!isAddRecipeEditable"
+      (dblclick)="toggleUpdateRecipeName()">
+      (Double click to add Recipe)
+    </div>
+    <div class="input-container" *ngIf="isAddRecipeEditable">
+      <i class="material-icons icon-bold icon-big"
+        (click)="addRecipe(addRecipeInput.value)">
+        add
+      </i>
+      <input id="input-recipe-name"
+        #addRecipeInput
+        (keyup.enter)="addRecipe(addRecipeInput.value)"
+        (dblclick)="isAddRecipeEditable=false"
+      >
+    </div>
+  </div>
 </div>

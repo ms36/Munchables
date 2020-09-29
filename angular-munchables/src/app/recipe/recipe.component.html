@@ -8,7 +8,7 @@
         (dblclick)="toggleUpdateRecipeName()"
         (mouseover)="showDeleteRecipeName=true"
         (mouseout)="showDeleteRecipeName=false">
-        {{this.recipes[this.pageNumber - 1].name}}
+        {{this.recipes[this.pageNumber - 1]?.name}}
       </p>
       <div class="icon-container"
         (mouseover)="showDeleteRecipeName=true"
