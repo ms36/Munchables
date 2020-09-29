@@ -10,12 +10,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RecipeComponent implements OnInit {
   @Input() pageNumber: number;
   @Input() recipes: Recipe[];
+
   isUpdateRecipeNameEditable = false;
   showDeleteRecipeName = false;
+  numberOfRecipes: number;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.numberOfRecipes = this.recipes.length;
   }
 
   updateStepProcess() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { Recipe } from '../models/recipe';
 import { RecipeService } from '../recipe/recipe.service';
 
@@ -10,21 +10,25 @@ import { RecipeService } from '../recipe/recipe.service';
 export class PageComponent implements OnInit {
   @Input() pageNumber: number;
   @Input() recipes: Recipe[];
+  @Output() messageEvent = new EventEmitter<number>();
+
   isAddRecipeEditable = false;
+  numberOfRecipes: number;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
+    this.numberOfRecipes = this.recipes.length;
   }
 
   addRecipe(recipeName = '') {
     this.isAddRecipeEditable = false;
-    console.log('recipeName ', recipeName);
     if (recipeName.search('^\\s*$') !== 0) {
       const recipe = new Recipe();
       recipe.name = recipeName;
-      console.log('recipe ', recipe);
-      this.recipeService.addRecipe(recipe).subscribe();
+      this.recipeService.addRecipe(recipe).subscribe(newRecipe => {
+        this.messageEvent.emit(this.numberOfRecipes + 1);
+        this.recipes.push(newRecipe); });
     }
   }
 

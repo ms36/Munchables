@@ -36,4 +36,9 @@ export class AppComponent implements OnInit {
       this.rightPageNumber += 2;
     }
   }
+
+  receiveMessage($event: number) {
+    console.log('receiveMessage', $event);
+    this.numberOfRecipes = $event;
+  }
 }

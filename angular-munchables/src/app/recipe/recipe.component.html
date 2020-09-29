@@ -1,14 +1,14 @@
 <div class="container">
   <div>
     <!-- Display Recipe Name-->
-    <div class="input-container" *ngIf="!isUpdateRecipeNameEditable">
+    <div class="input-container" *ngIf="recipes[pageNumber - 1] && !isUpdateRecipeNameEditable">
       <div class="icon-container"></div>
       <p class="name"
 
         (dblclick)="toggleUpdateRecipeName()"
         (mouseover)="showDeleteRecipeName=true"
         (mouseout)="showDeleteRecipeName=false">
-        {{this.recipes[this.pageNumber - 1]?.name}}
+        {{this.recipes[this.pageNumber - 1].name}}
       </p>
       <div class="icon-container"
         (mouseover)="showDeleteRecipeName=true"
@@ -36,5 +36,11 @@
     </div>
   </div>
 </div>
-<app-ingredients [pageNumber]="pageNumber" [recipes]="recipes"></app-ingredients>
-<app-steps [pageNumber]="pageNumber" [recipes]="recipes"></app-steps>
+<app-ingredients *ngIf="recipes[pageNumber - 1]"
+  [pageNumber]="pageNumber"
+  [recipes]="recipes">
+</app-ingredients>
+<app-steps *ngIf="recipes[pageNumber - 1]"
+  [pageNumber]="pageNumber"
+  [recipes]="recipes">
+</app-steps>

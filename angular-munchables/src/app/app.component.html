@@ -2,13 +2,15 @@
   class="split split-left"
   *ngIf="this.recipes"
   [pageNumber]="this.leftPageNumber"
-  [recipes]="this.recipes">
+  [recipes]="this.recipes"
+  (messageEvent)="receiveMessage($event)">
 </app-page>
 <app-page
   class="split split-right"
   *ngIf="this.recipes"
   [pageNumber]="this.rightPageNumber"
-  [recipes]="this.recipes">
+  [recipes]="this.recipes"
+  (messageEvent)="receiveMessage($event)">
 </app-page>
 <button
   class="turn-page-left"
