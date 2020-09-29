@@ -50,5 +50,4 @@ public class RecipeService {
 			recipeRepository.delete(recipe.get());
 		}
 	}
-
 }

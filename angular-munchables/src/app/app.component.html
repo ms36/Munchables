@@ -1,10 +1,12 @@
 <app-page
   class="split split-left"
+  *ngIf="this.recipes"
   [pageNumber]="this.leftPageNumber"
   [recipes]="this.recipes">
 </app-page>
 <app-page
   class="split split-right"
+  *ngIf="this.recipes"
   [pageNumber]="this.rightPageNumber"
   [recipes]="this.recipes">
 </app-page>

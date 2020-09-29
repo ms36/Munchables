@@ -49,7 +49,7 @@ public class RecipeController {
 		}		
 	}
 	
-	@PutMapping("/")
+	@PutMapping
 	public ResponseEntity<Recipe> saveRecipe(@RequestBody Recipe recipe) {
 		log.info("saveRecipe");
 		
@@ -63,10 +63,9 @@ public class RecipeController {
 	
 	@DeleteMapping("/recipeId")
 	public ResponseEntity<Recipe> deleteRecipe(@PathVariable int recipeId) {
-		log.info("deleteStep");
+		log.info("deleteRecipe");
 		
 		recipeService.deleteRecipe(recipeId);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
 }

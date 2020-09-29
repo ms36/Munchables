@@ -25,7 +25,8 @@ export class RecipeComponent implements OnInit {
   }
 
   deleteRecipe() {
-
+    const recipeId = this.recipes[this.pageNumber - 1].id;
+    this.recipeService.deleteRecipe(recipeId).subscribe();
   }
 
   toggleUpdateRecipeName() {

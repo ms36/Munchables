@@ -3,7 +3,7 @@
     <p>{{this.pageNumber}}</p>
   </div>
   <app-recipe
-    *ngIf="this.recipes"
+    *ngIf="this.recipes[this.pageNumber - 1]"
     [pageNumber]="this.pageNumber"
     [recipes]="this.recipes">
   </app-recipe>

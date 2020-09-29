@@ -1,6 +1,8 @@
 package com.skillstorm.beans;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,11 +24,11 @@ public class Recipe {
 	@Column(name = "NAME")
 	private String name;
 	
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany(mappedBy = "recipe", orphanRemoval = true, cascade = CascadeType.ALL)
 	@JsonManagedReference(value = "recipeIngredients")
 	private List<Ingredient> ingredients;
 
-	@OneToMany(mappedBy = "recipe")
+	@OneToMany(mappedBy = "recipe", orphanRemoval = true, cascade = CascadeType.ALL)
 	@JsonManagedReference(value = "recipeSteps")
 	private List<Step> steps;
 	

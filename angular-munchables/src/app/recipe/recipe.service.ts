@@ -25,4 +25,8 @@ export class RecipeService {
   saveRecipe(recipe: Recipe): Observable<Recipe> {
     return this.http.put<Recipe>(this.url, recipe, this.httpOptions);
   }
+
+  deleteRecipe(recipeId: number): Observable<Recipe> {
+    return this.http.delete<Recipe>(this.url + recipeId, this.httpOptions);
+  }
 }
