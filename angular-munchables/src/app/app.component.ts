@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   getAllRecipes(): void {
     this.recipeService.getAllRecipes().subscribe(recipe => {
       this.recipes = recipe;
-      this.recipes.push(new Recipe());
       this.numberOfRecipes = this.recipes.length;
       console.log('recipes', this.recipes);
     });
