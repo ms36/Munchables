@@ -1,10 +1,9 @@
 <div class="container">
   <div>
-    <!-- Display Recipe Name-->
+    <!-- Display Recipe Name -->
     <div class="input-container" *ngIf="recipes[pageNumber - 1] && !isUpdateRecipeNameEditable">
       <div class="icon-container"></div>
       <p class="name"
-
         (dblclick)="toggleUpdateRecipeName()"
         (mouseover)="showDeleteRecipeName=true"
         (mouseout)="showDeleteRecipeName=false">

@@ -1,17 +1,79 @@
-<app-page
-  class="split split-left"
-  *ngIf="this.recipes"
-  [pageNumber]="this.leftPageNumber"
-  [recipes]="this.recipes"
-  (messageEvent)="receiveMessage($event)">
-</app-page>
-<app-page
-  class="split split-right"
-  *ngIf="this.recipes"
-  [pageNumber]="this.rightPageNumber"
-  [recipes]="this.recipes"
-  (messageEvent)="receiveMessage($event)">
-</app-page>
+<div *ngIf="this.recipes">
+  <div *ngFor="let recipe of this.recipes; let i = index">
+    <!-- Left page -->
+    <div *ngIf="i % 2 === 0">
+      <!-- First recipe -->
+      <div *ngIf="i === 0">
+        <app-page
+          class="split split-left"
+          id="{{'page' + 1}}"
+          *ngIf="this.recipes"
+          [pageNumber]="1"
+          [recipes]="this.recipes"
+          (messageEvent)="receiveMessage($event)"
+          style="z-index: 1">
+        </app-page>
+      </div>
+      <div *ngIf="i !== 0">
+        <app-page
+          class="split split-left"
+          id="{{'page' + (i + 1)}}"
+          [pageNumber]="i + 1"
+          [recipes]="this.recipes"
+          (messageEvent)="receiveMessage($event)"
+          [style.z-index]="(this.recipes.length - i) + 1"
+          style="transform: rotatey(-179deg);">
+        </app-page>
+      </div>
+    </div>
+    <!-- Right page -->
+    <div *ngIf="i % 2 !== 0">
+      <app-page
+        class="split split-right"
+        id="{{'page' + (i + 1)}}"
+        [pageNumber]="i + 1"
+        [recipes]="this.recipes"
+        (messageEvent)="receiveMessage($event)"
+        [style.z-index]="(this.recipes.length - i) + 1">
+      </app-page>
+    </div>
+  </div>
+</div>
+
+<!-- Extra page(or 2) to add a new recipe -->
+<div *ngIf="this.recipes">
+  <div *ngIf="this.recipes.length % 2 !== 0" >
+    <app-page
+      class="split split-right"
+      id="{{'page' + (this.recipes.length + 1)}}"
+      [pageNumber]="this.recipes.length + 1"
+      [recipes]="this.recipes"
+      (messageEvent)="receiveMessage($event)"
+      style="z-index: 1">
+    </app-page>
+  </div>
+
+  <div *ngIf="this.recipes.length % 2 === 0" >
+      <app-page
+      class="split split-left"
+      id="{{'page' + (this.recipes.length + 1)}}"
+      [pageNumber]="this.recipes.length + 1"
+      [recipes]="this.recipes"
+      (messageEvent)="receiveMessage($event)"
+      [style.z-index]="this.recipes.length + 1"
+      style="transform: rotatey(-179deg);">
+    </app-page>
+    <app-page
+      class="split split-right"
+      id="{{'page' + (this.recipes.length + 2)}}"
+      [pageNumber]="this.recipes.length + 2"
+      [recipes]="this.recipes"
+      (messageEvent)="receiveMessage($event)"
+      style="z-index: 1">
+    </app-page>
+  </div>
+</div>
+
 <button
   class="turn-page-left"
   *ngIf="this.leftPageNumber > 1"

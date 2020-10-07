@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Recipe } from './models/recipe';
 import { RecipeService } from './recipe/recipe.service';
 
@@ -7,7 +7,7 @@ import { RecipeService } from './recipe/recipe.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'angular-munchables';
   leftPageNumber = 1;
   rightPageNumber = 2;
@@ -29,9 +29,17 @@ export class AppComponent implements OnInit {
 
   turnPage(direction: string): void {
     if (direction === 'left') {
+      document.getElementById('page' + (this.leftPageNumber - 1)).style.transform += 'rotatey(180deg)';
+      document.getElementById('page' + (this.rightPageNumber - 1)).style.transform += 'rotatey(180deg)';
+      document.getElementById('page1').style.transform = '';
+
       this.leftPageNumber -= 2;
       this.rightPageNumber -= 2;
     } else if (direction === 'right') {
+      document.getElementById('page' + (this.leftPageNumber + 1)).style.transform += 'rotatey(180deg)';
+      document.getElementById('page' + (this.rightPageNumber + 1)).style.transform += 'rotatey(180deg)';
+      document.getElementById('page1').style.transform = '';
+
       this.leftPageNumber += 2;
       this.rightPageNumber += 2;
     }
