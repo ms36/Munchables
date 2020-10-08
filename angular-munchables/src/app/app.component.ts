@@ -7,7 +7,7 @@ import { RecipeService } from './recipe/recipe.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'angular-munchables';
   leftPageNumber = 1;
   rightPageNumber = 2;
