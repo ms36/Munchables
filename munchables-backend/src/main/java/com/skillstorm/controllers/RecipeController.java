@@ -40,6 +40,7 @@ public class RecipeController {
 	
 	@GetMapping("/{recipeId}")
 	public ResponseEntity<Recipe> getRecipeById(@PathVariable int recipeId) {
+		log.info("getRecipeById");
 		
 		Recipe recipe = recipeService.findById(recipeId);
 		
@@ -48,18 +49,6 @@ public class RecipeController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}		
-	}
-	
-	@PutMapping
-	public ResponseEntity<Recipe> saveRecipe(@RequestBody Recipe recipe) {
-		log.info("saveRecipe");
-		
-		Recipe newRecipe = recipeService.saveRecipe(recipe);
-		
-		if (newRecipe == null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-		return new ResponseEntity<>(newRecipe, HttpStatus.OK);	
 	}
 	
 	@PostMapping
@@ -72,6 +61,18 @@ public class RecipeController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(newRecipe, HttpStatus.OK);
+	}
+	
+	@PutMapping
+	public ResponseEntity<Recipe> saveRecipe(@RequestBody Recipe recipe) {
+		log.info("saveRecipe");
+		
+		Recipe newRecipe = recipeService.saveRecipe(recipe);
+		
+		if (newRecipe == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<>(newRecipe, HttpStatus.OK);	
 	}
 	
 	@DeleteMapping("/{recipeId}")
