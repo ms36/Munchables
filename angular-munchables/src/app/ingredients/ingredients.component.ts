@@ -14,11 +14,11 @@ export class IngredientsComponent implements OnInit {
 
   ingredients: Ingredients[] = [];
   isAddIngredientEditable = false;
-  isUpdateLeftIngredientEditable = [false, false, false, false, false, false];
-  isUpdateRightIngredientEditable = [false, false, false, false, false, false];
   showAddIngredient = false;
   // TODO: the size of these arrays should dependant on half
   // the number ingredients in a recipe and not hard coded
+  isUpdateLeftIngredientEditable = [false, false, false, false, false, false];
+  isUpdateRightIngredientEditable = [false, false, false, false, false, false];
   showLeftDeleteIngredient = [false, false, false, false, false, false];
   showRightDeleteIngredient = [false, false, false, false, false, false];
   constructor(private ingredientsService: IngredientsService) { }
@@ -43,10 +43,12 @@ export class IngredientsComponent implements OnInit {
     // If ingredientName does not contain all spaces or is not empty
     if (ingredientName.search('^\\s*$') !== 0) {
       let ingredient: Ingredients;
-      this.ingredientsService.addIngredient({id: null, name: ingredientName},
-                                            this.recipes[this.pageNumber - 1].id)
-                                            .subscribe(i => {ingredient = i;
-                                                             this.recipes[this.pageNumber - 1].ingredients.push(ingredient); });
+      const newIngredient = {id: null, name: ingredientName};
+      const recipeId =  this.recipes[this.pageNumber - 1].id;
+
+      this.ingredientsService.addIngredient(newIngredient, recipeId)
+        .subscribe(i => {ingredient = i;
+                         this.recipes[this.pageNumber - 1].ingredients.push(ingredient); });
     }
   }
 
@@ -95,7 +97,8 @@ export class IngredientsComponent implements OnInit {
     this.recipes[this.pageNumber - 1].ingredients[indexColumn].name = ingredientName;
     ingredientId = this.recipes[this.pageNumber - 1].ingredients[indexColumn].id;
 
-    this.ingredientsService.saveIngredient({id: ingredientId, name: ingredientName}, recipeId).subscribe();
+    const updatedIngredient = {id: ingredientId, name: ingredientName};
+    this.ingredientsService.saveIngredient(updatedIngredient, recipeId).subscribe();
   }
 
   checkToHideInput() {

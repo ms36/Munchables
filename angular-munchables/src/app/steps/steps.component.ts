@@ -24,19 +24,17 @@ export class StepsComponent implements OnInit {
   }
 
   addStepProcess(addStepProcess = '') {
+    // If addStepProcess does not contain all spaces or is not empty
     if (addStepProcess.search('^\\s*$') !== 0) {
-      const stepLength = this.recipes[this.pageNumber - 1].steps.length;
-      const firstLetterUpperCase = addStepProcess.substring(0, 1).toUpperCase();
-      const stepProcessWithoutFirstLetter = addStepProcess.substring(1, addStepProcess.length);
-      addStepProcess = firstLetterUpperCase + stepProcessWithoutFirstLetter;
       let step: Steps;
+      const stepLength = this.recipes[this.pageNumber - 1].steps.length;
+      addStepProcess = this.capitalizeFirstLetter(addStepProcess);
+      const newStep = {id: null, stepOrder: stepLength, stepProcess: addStepProcess};
+      const recipeId =  this.recipes[this.pageNumber - 1].id;
 
-      this.stepService.addStep({id: null,
-                                stepOrder: stepLength,
-                                stepProcess: addStepProcess},
-                                this.recipes[this.pageNumber - 1].id).subscribe(s => {step = s;
-                                  // tslint:disable-next-line: align
-                                  this.recipes[this.pageNumber - 1].steps.push(step); });
+      this.stepService.addStep(newStep, recipeId).subscribe(s => {
+        step = s;
+        this.recipes[this.pageNumber - 1].steps.push(step); });
       }
   }
 
@@ -78,5 +76,11 @@ export class StepsComponent implements OnInit {
     if (this.showAddStep && !this.isAddStepEditable) {
       this.showAddStep = false;
     }
+  }
+
+  capitalizeFirstLetter(str: string): string {
+    const firstLetterUpperCase = str.substring(0, 1).toUpperCase();
+    const stringWithoutFirstLetter = str.substring(1, str.length);
+    return firstLetterUpperCase + stringWithoutFirstLetter;
   }
 }

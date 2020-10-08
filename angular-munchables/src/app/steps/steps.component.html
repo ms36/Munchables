@@ -18,6 +18,7 @@
           </i>
         </div>
       </div>
+      <!-- Display Step -->
       <div *ngIf="!isUpdateStepEditable[i]"
         (mouseover)="showDeleteStep[i]=true"
         (mouseout)="showDeleteStep[i]=false"
@@ -25,6 +26,7 @@
       >
         <p>{{i + 1}}. {{step.stepProcess}}</p>
       </div>
+      <!-- Edit Step -->
       <div *ngIf="isUpdateStepEditable[i]" (mouseover)="showDeleteStep[i]=false">
         <div class="input-container">
           <input id="input-edit-step"

@@ -11,8 +11,9 @@ export class AppComponent implements OnInit {
   title = 'angular-munchables';
   leftPageNumber = 1;
   rightPageNumber = 2;
-  numberOfRecipes = 2;
+  numberOfRecipes: number;
   recipes: Recipe[];
+
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {

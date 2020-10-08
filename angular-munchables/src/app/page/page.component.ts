@@ -26,6 +26,7 @@ export class PageComponent implements OnInit {
     if (recipeName.search('^\\s*$') !== 0) {
       const recipe = new Recipe();
       recipe.name = recipeName;
+
       this.recipeService.addRecipe(recipe).subscribe(newRecipe => {
         this.messageEvent.emit(this.numberOfRecipes + 1);
         this.recipes.push(newRecipe); });
@@ -38,5 +39,4 @@ export class PageComponent implements OnInit {
       setTimeout(() => document.getElementById('input-recipe-name').focus(), 0);
     }
   }
-
 }

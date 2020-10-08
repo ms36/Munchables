@@ -20,7 +20,7 @@
             </i>
           </div>
         </div>
-        <!-- Show ingredient -->
+        <!-- Display Ingredient -->
         <td *ngIf="!isUpdateLeftIngredientEditable[i]"
           (mouseover)="showLeftDeleteIngredient[i]=true"
           (mouseout)="showLeftDeleteIngredient[i]=false"
@@ -28,7 +28,7 @@
         >
           {{ingredient.name}}
         </td>
-        <!-- Edit ingredient -->
+        <!-- Edit Ingredient -->
         <td *ngIf="isUpdateLeftIngredientEditable[i]" (mouseover)="showLeftDeleteIngredient[i]=false">
           <div class="input-container">
             <input id="input-edit-ingredient"
@@ -44,7 +44,7 @@
     <th>
       <!-- Right Column -->
       <tr *ngFor="let ingredient of getHalfIngredientsFromRecipe(1); let i=index">
-        <!-- Show ingredient -->
+        <!-- Display Ingredient -->
         <td *ngIf="!isUpdateRightIngredientEditable[i]"
           (mouseover)="showRightDeleteIngredient[i]=true"
           (mouseout)="showRightDeleteIngredient[i]=false"
@@ -52,7 +52,7 @@
         >
           {{ingredient.name}}
         </td>
-        <!-- Edit ingredient -->
+        <!-- Edit Ingredient -->
         <td *ngIf="isUpdateRightIngredientEditable[i]" (mouseover)="showRightDeleteIngredient[i]=false">
           <div class="input-container">
             <input id="input-edit-ingredient"

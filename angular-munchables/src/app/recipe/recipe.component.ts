@@ -40,5 +40,4 @@ export class RecipeComponent implements OnInit {
       setTimeout(() => document.getElementById('input-recipe-name').focus(), 0);
     }
   }
-
 }
