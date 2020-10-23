@@ -3,36 +3,25 @@
   width: 50%;
   position: absolute;
 
-  right: 0;
   background-color: rgb(250, 224, 188);
-  background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0),rgba(0,0,0,0),
-                                 rgba(0,0,0,0), rgba(0,0,0,0.8)), url(src/assets/PaperTextureMirrored.png);
   background-size: cover;
-  transform-origin: 0px 0px;
   backface-visibility: hidden;
   transition: transform 1s cubic-bezier(0.815, 0.005, 0.18, 1.005);
 }
 
 .split-left {
   left: 0;
-  background-color: rgb(250, 224, 188);
   background-image: linear-gradient(to right,rgba(0,0,0,0.2), rgba(0,0,0,0), rgba(0,0,0,0),
                                   rgba(0,0,0,0), rgba(0,0,0,0.8)), url(src/assets/PaperTextureMirrored.png);
-  background-size: cover;
   transform-origin: 100% 0px;
-  transition: transform 1s cubic-bezier(0.815, 0.005, 0.18, 1.005);
 }
 
-/* .split-right {
+.split-right {
   right: 0;
-  background-color: rgb(250, 224, 188);
   background-image: linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0),rgba(0,0,0,0),
                                  rgba(0,0,0,0), rgba(0,0,0,0.8)), url(src/assets/PaperTextureMirrored.png);
-  background-size: cover;
   transform-origin: 0px 0px;
-  backface-visibility: hidden;
-  transition: transform 1s cubic-bezier(0.815, 0.005, 0.18, 1.005);
-} */
+}
 
 button {
   width: 140px;
@@ -61,5 +50,4 @@ button:hover {
 
 .page-container {
   transform-origin: 50% 0px;
-
 }

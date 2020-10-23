@@ -17,25 +17,23 @@ export class IngredientsComponent implements OnInit {
   showAddIngredient = false;
   // TODO: the size of these arrays should dependant on half
   // the number ingredients in a recipe and not hard coded
-  isUpdateLeftIngredientEditable = [false, false, false, false, false, false];
-  isUpdateRightIngredientEditable = [false, false, false, false, false, false];
-  showLeftDeleteIngredient = [false, false, false, false, false, false];
-  showRightDeleteIngredient = [false, false, false, false, false, false];
+  isUpdateLeftIngredientEditable: boolean[];
+  isUpdateRightIngredientEditable: boolean[];
+  showLeftDeleteIngredient: boolean[];
+  showRightDeleteIngredient: boolean[];
   constructor(private ingredientsService: IngredientsService) { }
 
   ngOnInit() {
+    this.isUpdateLeftIngredientEditable = Array(9).fill(false);
+    this.isUpdateRightIngredientEditable = Array(9).fill(false);
+    this.showLeftDeleteIngredient = Array(9).fill(false);
+    this.showRightDeleteIngredient = Array(9).fill(false);
   }
 
   getHalfIngredientsFromRecipe(half: number) {
-    let ingredientTotal = 0;
-    const ingredientList = [];
+    const ingredients = this.recipes[this.pageNumber - 1].ingredients;
+    const ingredientList = ingredients.filter((ingredient, index) => index % 2 === half);
 
-    for (const ingredient of this.recipes[this.pageNumber - 1].ingredients) {
-      if (ingredientTotal % 2 === half) {
-        ingredientList.push(ingredient);
-      }
-      ingredientTotal++;
-    }
     return ingredientList;
   }
 

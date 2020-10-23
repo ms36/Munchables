@@ -15,12 +15,14 @@ export class StepsComponent implements OnInit {
   steps: Steps[] = [];
   isAddStepEditable = false;
   showAddStep = false;
-  showDeleteStep = [false, false, false, false, false, false];
-  isUpdateStepEditable = [false, false, false, false, false, false];
+  showDeleteStep: boolean[];
+  isUpdateStepEditable: boolean[];
 
   constructor(private stepService: StepService) { }
 
   ngOnInit() {
+    this.showDeleteStep = Array(9).fill(false);
+    this.isUpdateStepEditable = Array(9).fill(false);
   }
 
   addStepProcess(addStepProcess = '') {
